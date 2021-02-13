@@ -27,23 +27,28 @@ html {
 		background-color: var(--border-theme);
 		position: relative;
 	}
-	.products__content{
+	.products__content-wrapper{
 		width: 100%;
 		height: 100%;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
 		padding: 5%;
 		box-sizing: border-box;
-		overflow-y: scroll;
+		overflow: hidden;
 	}
-		.product {
-			width: 21%;
-			height: 200px;
-			background-color: var(--background-theme);
-			border: 1px solid var(--border-theme);
-			border-radius: 5px;
-			margin-right: 4%;
-			margin-bottom: 5%;
-			box-sizing: border-box;
+		.products__content {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			overflow-y: scroll;
 		}
+			.product {
+				width: 21%;
+				height: 200px;
+				background-color: var(--background-theme);
+				border: 1px solid var(--border-theme);
+				border-radius: 5px;
+				margin-right: 4%;
+				margin-bottom: 5%;
+				box-sizing: border-box;
+			}
