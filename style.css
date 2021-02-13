@@ -1,6 +1,6 @@
 html {
-	
 	--background-theme: #fff;
+	--main-color: #8db8ee;
 	--border-theme: #ccc;
 }
 * {
@@ -8,12 +8,12 @@ html {
 	padding: 0;
 }
 .products {
-	width: 50%;
-	height: 50%;
+	width: 70%;
+	height: 70%;
 	display: flex;
 	flex-direction: column;
 	background-color: var(--background-theme);
-	border: 1px solid var(--border-theme);
+	border: 1px solid var(--main-color);
 	border-radius: 5px;
 	margin: 0 auto;
 	position: relative;
@@ -24,7 +24,7 @@ html {
 		width: 100%;
 		height: 60px;
 		flex-shrink: 0;
-		background-color: var(--border-theme);
+		background-color: var(--main-color);
 		position: relative;
 	}
 	.products__content-wrapper{
@@ -44,11 +44,74 @@ html {
 		}
 			.product {
 				width: 21%;
-				height: 200px;
+				/*height: 400px;*/
+				color: #000;
 				background-color: var(--background-theme);
 				border: 1px solid var(--border-theme);
 				border-radius: 5px;
 				margin-right: 4%;
-				margin-bottom: 5%;
+				margin-bottom: 4%;				
+				padding: 20px 10px;
 				box-sizing: border-box;
 			}
+				.product__image-wrapper {
+					width: 100%;
+					height: 200px;
+					display: flex;
+					justify-content: center;
+					box-sizing: border-box;
+					margin-bottom: 10px;
+				}
+					.product__image {
+						width: 100%;					
+						max-width: 200px;
+						height: 100%;
+						object-fit: cover;
+					}
+				.product__info {
+					
+				}	
+					.product__title {
+						font-size: 18px;
+						margin-bottom: 5px;
+					}
+					.product__id {
+						font-size: 14px;
+					}
+					.product__description /**/{
+						max-height: 100px;
+						overflow: hidden;
+						display: -webkit-box;
+						-webkit-line-clamp: 3;
+						line-clamp: 3;
+						-webkit-box-orient: vertical;
+						box-orient: vertical;
+					}
+					.product__price {
+						font-size: 18px;
+						text-align: center;
+						line-height: 3;
+					}
+					.product__buttons {
+						width: 100%;
+
+						display: flex;
+						justify-content: space-around;
+					}
+						.product__button-buy {
+							width: 100%;
+							height: 40px;
+							font-size: 18px;
+							border: 1px solid var(--border-theme);
+							border-radius: 5px;
+							background-color: var(--background-theme);
+							outline: none;
+						}
+						.product__button-buy:hover {
+							color: var(--background-theme);
+							border: 1px solid #ccc;
+							background-color: var(--main-color);
+						}
+						.product__button-buy:focus {
+							outline: none;
+						}
