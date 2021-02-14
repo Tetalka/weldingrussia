@@ -32,7 +32,6 @@ html {
 		position: fixed;
 		box-sizing: border-box;
 		color: #000;
-		font-weight: bold;
 	}
 		.nav__item {
 			font-size: 18px;
@@ -47,12 +46,61 @@ html {
 				border-radius: 5px;
 				background-color: var(--main-color);
 				color: var(--background-color);
-				padding: 5px;
+				font-weight: bold;
+				box-sizing: content-box;
 			}
 			.catalog:hover {
 				border-color: var(--main-color);
 				background-color: var(--background-color);
 				color: #000;
+			}
+				.catalog__title {
+					padding: 5px;
+				}
+				.catalog__list {
+					position: absolute;
+					display: none;					
+					background-color: var(--background-color);
+					border: 1px solid var(--main-color);
+					box-sizing: border-box;
+					font-weight: normal;
+					white-space: nowrap;
+					transform: translateX(-1px); /**/
+				}
+					.catalog__item-title {
+						transition: color 100ms 0ms;
+					}
+					.catalog__item-title:hover {
+						color: var(--main-color);
+					}
+					.catalog__list-item {
+						position: relative;
+						padding: 20px 10px;
+						box-sizing: border-box;
+					}
+					.catalog__main-item:hover {
+						background-color: var(--border-color);
+					}
+					.catalog__list-item:hover > .catalog__subcatalog {
+						display: block;
+					}
+						.catalog__subcatalog {
+							position: absolute;
+							top: 0;
+							right: 0;
+							transform: translateX(100%) /**/ translateY(-1px);
+							display: none;
+							background-color: var(--background-color);
+							border: 1px solid var(--main-color);
+							white-space: nowrap;
+							box-sizing: border-box;
+						}
+						.subcatalog__item {
+							margin: 20px 10px;
+							padding: 0;
+						}
+			.catalog:hover > .catalog__list {
+				display: block;
 			}
 	.products__content-wrapper{
 		width: 100%;
@@ -138,6 +186,7 @@ html {
 							border-radius: 5px;
 							background-color: var(--background-color);
 							outline: none;
+							cursor: pointer;
 						}
 						.product__button-buy:hover {
 							color: var(--background-color);
