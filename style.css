@@ -361,3 +361,9 @@ html {
 			font-size: 18px;
 		}
 }
+@media (max-width: 480px) {
+		.products__content_column .product__image-wrapper {
+			width: 70px;
+			height: 70px;
+		}
+}
