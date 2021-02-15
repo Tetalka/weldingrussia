@@ -52,8 +52,8 @@ window.onload = () => {
 				        'Content-Type': 'application/json;charset=utf-8'
 				    },
 				    body: JSON.stringify({
-						'id': productTitle.data['activeTitle'].parentNode.querySelector('.product__id').textContent,
-						'newText': productTitle.data['activeTitle'].textContent
+						'id': productTitle.data['activeTitle'].parentNode.querySelector('.product__id').textContent.replace(/\s{2,}/g, ' '),
+						'newText': productTitle.data['activeTitle'].textContent.replace(/\s{2,}/g, ' ')
 					})
 				});
 			});
