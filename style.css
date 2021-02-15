@@ -172,7 +172,6 @@ html {
 			.products__content_tile .product {
 				width: 22%;				
 				margin-right: 4%;
-				position: relative;
 			}
 			.products__content_column .product {
 				width: 100%;
@@ -215,7 +214,26 @@ html {
 					.product__title {
 						font-size: 18px;
 						margin-bottom: 5px;
+						position: relative;
+						box-sizing: border-box; 
 					}
+						.product__button-change-title {
+							position: absolute;
+							right: 0;
+							top: 0;
+							transform: translateY(-100%);
+							background-color: var(--main-color);
+							border: 1px solid var(--border-color);
+							border-radius: 5px 5px 0 0;
+							padding: 5px;
+							color: var(--background-color);
+							cursor: pointer;
+						}
+						.product__button-change-title:hover {
+							background-color: var(--background-color);
+							border-color: var(--main-color);
+							color: #000;
+						}
 					.products__content_column .product__title {
 						white-space: nowrap;
 					}
