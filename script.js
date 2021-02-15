@@ -45,7 +45,6 @@ window.onload = () => {
 			button.addEventListener('click', function() {			
 				productTitle.deleteButton();
 				saveChange.call(productTitle);
-				//productTitle.data['activeTitle'].dispatchEvent(new Event('focusout'));
 
 				fetch('localhost', {
 				    method: 'POST',
@@ -77,15 +76,43 @@ window.onload = () => {
 			this.data['titleText'] = null;
 		}
 	}
-	for(let i = 0; i < productTitle.data['titles'].length; i++) {
-		productTitle.data['titles'][i].addEventListener('focusin', function() {
+	for(let i = 0, titles = productTitle.data['titles']; i < titles.length; i++) {
+		titles[i].contentEditable = true;
+		titles[i].spellcheck = false;
+		titles[i].addEventListener('focusin', function() {
 			productTitle.data['activeTitle'] = this;
 			productTitle.data['titleText'] = this.textContent;
 			productTitle.addButton();
 		});
-		productTitle.data['titles'][i].addEventListener('focusout', function() {			
+		titles[i].addEventListener('focusout', function() {			
 			productTitle.deleteButton();			
 			productTitle.returnState();
 		});
 	}
+	
+	//Изменение порядка товаров путём перемещения
+	const productsPlace = document.querySelector('.products__content');
+	for(let i = 0, buttons = document.querySelectorAll('.product__button-drag'), products = document.querySelectorAll('.product'); i < buttons.length; i++) {
+		buttons[i].addEventListener('mousedown', () => {products[i].draggable = true});
+		products[i].addEventListener('dragend', () => {products[i].draggable = false});
+	}
+	for(let product of document.querySelectorAll('.product')) {
+		product.querySelector('.product__image').draggable = false;
+	}
+	productsPlace.addEventListener('dragstart', (e) => {
+		e.target.classList.add('product_drag-selected');
+	});
+	productsPlace.addEventListener('dragend', (e) => {
+		e.target.classList.remove('product_drag-selected');
+	});
+	productsPlace.addEventListener('dragover', (e)=> {
+		const activeProduct = productsPlace.querySelector('.product_drag-selected');
+		const targetProduct = e.target;
+		const isDragable = (activeProduct !== targetProduct) && (targetProduct.classList.contains('product'));
+		
+		if(!isDragable) return;
+		
+		const nextProduct = (targetProduct === activeProduct.nextSibling) ? targetProduct.nextSibling : targetProduct;
+		productsPlace.insertBefore(activeProduct, nextProduct);
+	});
 }
