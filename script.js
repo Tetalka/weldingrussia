@@ -116,3 +116,40 @@ window.onload = () => {
 		productsPlace.insertBefore(activeProduct, nextProduct);
 	});
 }
+
+//Генерация пар скобок
+function getBrackets(num) {
+	const brackets = ['()', '{}', '[]'];
+	let notClosed = [];
+	let str = '';
+	
+	for(let i = 0; i < num;) {
+		let act = getAction();
+		if( act === 1 || notClosed.length === 0) {
+			str += openBracket();
+			i++;
+		}
+		else {
+			str += closeBracket();
+		}
+	}
+	while(notClosed.length != 0) {
+		str += closeBracket();
+	}
+	return str;
+	
+	function getAction() {
+		return Math.floor(Math.random()*2);
+	}
+	function openBracket() {
+		let random = Math.floor(Math.random()*3);
+		let bracket = brackets[random][0];
+		notClosed.unshift(brackets[random][1]);
+		return bracket;
+	}
+	function closeBracket() {
+		let bracket = notClosed[0];
+		notClosed = notClosed.slice(1);
+		return bracket;
+	}
+}
