@@ -39,9 +39,6 @@ html {
 			align-self: center;
 			cursor: pointer;
 		}
-		.nav__item:hover {
-			
-		}
 			.products__catalog {
 				border: 1px solid var(--border-color);
 				border-radius: 5px;
@@ -63,10 +60,11 @@ html {
 					display: none;					
 					background-color: var(--background-color);
 					border: 1px solid var(--main-color);
+					border-radius: 5px;
 					box-sizing: border-box;
 					font-weight: normal;
 					white-space: nowrap;
-					transform: translateX(-1px); /**/
+					transform: translateX(-1px); 
 				}
 					.catalog__item-title {
 						transition: color 100ms 0ms;
@@ -74,13 +72,16 @@ html {
 					.catalog__item-title:hover {
 						color: var(--main-color);
 					}
+					.catalog__main-item > .catalog__item-title:hover {
+						color: var(--background-color);
+					}
 					.catalog__list-item {
 						position: relative;
 						padding: 20px 10px;
 						box-sizing: border-box;
 					}
 					.catalog__main-item:hover {
-						background-color: var(--border-color);
+						background-color: var(--main-color);
 					}
 					.catalog__list-item:hover > .catalog__subcatalog {
 						display: block;
@@ -89,10 +90,11 @@ html {
 							position: absolute;
 							top: 0;
 							right: 0;
-							transform: translateX(100%) /**/ translateY(-1px);
+							transform: translateX(100%) translateY(-1px);
 							display: none;
 							background-color: var(--background-color);
 							border: 1px solid var(--main-color);
+							border-radius: 5px;
 							white-space: nowrap;
 							box-sizing: border-box;
 						}
@@ -204,12 +206,6 @@ html {
 						height: 100%;
 						object-fit: cover;
 					}
-				.product__info {
-					
-				}
-				.products__content_tile .product__info {
-					
-				}
 				.products__content_column .product__info {
 					width: 60%;
 					margin-right: 5%;
@@ -260,9 +256,6 @@ html {
 						line-clamp: 5;
 						-webkit-box-orient: vertical;
 						box-orient: vertical;
-					}
-					.product__panel {
-						
 					}
 					.products__content_column .product__panel {
 						width: 30%;

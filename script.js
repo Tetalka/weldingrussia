@@ -95,9 +95,7 @@ window.onload = () => {
 	for(let i = 0, buttons = document.querySelectorAll('.product__button-drag'), products = document.querySelectorAll('.product'); i < buttons.length; i++) {
 		buttons[i].addEventListener('mousedown', () => {products[i].draggable = true});
 		products[i].addEventListener('dragend', () => {products[i].draggable = false});
-	}
-	for(let product of document.querySelectorAll('.product')) {
-		product.querySelector('.product__image').draggable = false;
+		products[i].querySelector('.product__image').draggable = false;
 	}
 	productsPlace.addEventListener('dragstart', (e) => {
 		e.target.classList.add('product_drag-selected');
@@ -119,13 +117,13 @@ window.onload = () => {
 
 //Генерация пар скобок
 function getBrackets(num) {
-	const brackets = ['()', '{}', '[]'];
-	let notClosed = [];
+	const brackets = ['()', '{}', '[]']; //Виды скобок
+	let notClosed = []; //Открытые скобки
 	let str = '';
 	
 	for(let i = 0; i < num;) {
-		let act = getAction();
-		if( act === 1 || notClosed.length === 0) {
+		let act = getAction(); 
+		if( act === 1 || notClosed.length === 0) {	//Открывать новую скобку или закрывать нынешнюю
 			str += openBracket();
 			i++;
 		}
@@ -133,7 +131,7 @@ function getBrackets(num) {
 			str += closeBracket();
 		}
 	}
-	while(notClosed.length != 0) {
+	while(notClosed.length != 0) { //Закрыть оставшиеся открытые скобки
 		str += closeBracket();
 	}
 	return str;
@@ -141,13 +139,13 @@ function getBrackets(num) {
 	function getAction() {
 		return Math.floor(Math.random()*2);
 	}
-	function openBracket() {
+	function openBracket() { //Выбрать случайный вид открытой скобки
 		let random = Math.floor(Math.random()*3);
 		let bracket = brackets[random][0];
 		notClosed.unshift(brackets[random][1]);
 		return bracket;
 	}
-	function closeBracket() {
+	function closeBracket() { //Закрыть последнюю открытую скобку
 		let bracket = notClosed[0];
 		notClosed = notClosed.slice(1);
 		return bracket;
@@ -157,11 +155,11 @@ function getBrackets(num) {
 //Проверка генерации пар скобок
 function checkBrackets(str) {	
 	const brackets = ['()', '{}', '[]'];
-	let opened = [];
-	let index = 0;
+	let opened = []; //Все открытые скобки
+	let index = 0; //Индекс вида скобки из brackets последней открытой скобки из opened
 	for(let bracket of str) {
 		let isOpened = false;
-		for(let i = 0; i < brackets.length; i++) {
+		for(let i = 0; i < brackets.length; i++) { //Проверка, что данная скобка открытая
 			if(bracket === brackets[i][0]) {
 				isOpened = true;
 				opened.push(bracket);
@@ -169,15 +167,15 @@ function checkBrackets(str) {
 				break;
 			}
 		}
-		if(!isOpened) {
-			for(let j = 0; j < brackets.length; j++) {
+		if(!isOpened) { //Обработка закрывающей скобки
+			for(let j = 0; j < brackets.length; j++) { //Обновление индекса вида скобки
 				if(opened[opened.length-1] === brackets[j][0]) {
 					index = j;
 					break;
 				}
 			}
-			if(bracket !== brackets[index][1]) return false;
-			else opened.pop();
+			if(bracket !== brackets[index][1]) return false; //Если закрывающая скобка не подходит к последней открытой
+			else opened.pop(); //Иначе удаляется последняя открытая скобка из opened
 		}
 	}
 	return true;
