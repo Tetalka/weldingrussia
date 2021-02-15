@@ -153,3 +153,32 @@ function getBrackets(num) {
 		return bracket;
 	}
 }
+
+//Проверка генерации пар скобок
+function checkBrackets(str) {	
+	const brackets = ['()', '{}', '[]'];
+	let opened = [];
+	let index = 0;
+	for(let bracket of str) {
+		let isOpened = false;
+		for(let i = 0; i < brackets.length; i++) {
+			if(bracket === brackets[i][0]) {
+				isOpened = true;
+				opened.push(bracket);
+				index = i;
+				break;
+			}
+		}
+		if(!isOpened) {
+			for(let j = 0; j < brackets.length; j++) {
+				if(opened[opened.length-1] === brackets[j][0]) {
+					index = j;
+					break;
+				}
+			}
+			if(bracket !== brackets[index][1]) return false;
+			else opened.pop();
+		}
+	}
+	return true;
+}
