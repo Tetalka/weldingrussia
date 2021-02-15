@@ -50,10 +50,21 @@ html {
 			.products__catalog:hover {
 				border-color: var(--main-color);
 				background-color: var(--background-color);
+			}
+			.products__catalog:hover .catalog__title {
 				color: #000;
+			}
+			.link {
+				text-decoration: none;
+				outline: none;
+			}
+			.link:focus {
+				outline: none;
 			}
 				.catalog__title {
 					padding: 5px;
+					line-height: 2;
+					color: var(--background-color);
 				}
 				.catalog__list {
 					position: absolute;
@@ -64,9 +75,10 @@ html {
 					box-sizing: border-box;
 					font-weight: normal;
 					white-space: nowrap;
-					transform: translateX(-1px); 
+					transform: translateX(-2px); 
 				}
 					.catalog__item-title {
+						color: #000;
 						transition: color 100ms 0ms;
 					}
 					.catalog__item-title:hover {
@@ -90,7 +102,7 @@ html {
 							position: absolute;
 							top: 0;
 							right: 0;
-							transform: translateX(100%) translateY(-1px);
+							transform: translateX(100%) translateY(-2px);
 							display: none;
 							background-color: var(--background-color);
 							border: 1px solid var(--main-color);
