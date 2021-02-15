@@ -362,8 +362,8 @@ html {
 		}
 }
 @media (max-width: 480px) {
-		.products__content_column .product__image-wrapper {
-			width: 70px;
-			height: 70px;
+		.products__content_tile .product__image-wrapper {
+			width: 100px;
+			height: 100px;
 		}
 }
