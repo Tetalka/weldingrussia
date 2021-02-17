@@ -104,8 +104,18 @@ window.onload = () => {
 		e.target.classList.remove('product_drag-selected');
 	});
 	productsPlace.addEventListener('dragover', (e)=> {
+		e.preventDefault();
+
 		const activeProduct = productsPlace.querySelector('.product_drag-selected');
-		const targetProduct = e.target;
+		let targetProduct = target = e.target;
+		while(target.parentNode) {
+			target = target.parentNode;
+			if(target.classList) if(target.classList.contains('product')) {
+				targetProduct = target;
+				break;
+			}
+		}
+
 		const isDragable = (activeProduct !== targetProduct) && (targetProduct.classList.contains('product'));
 		
 		if(!isDragable) return;
