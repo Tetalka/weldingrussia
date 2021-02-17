@@ -366,4 +366,7 @@ html {
 			width: 100px;
 			height: 100px;
 		}
+		.products__content_column .product__panel {
+			width: 40%;
+		}
 }
